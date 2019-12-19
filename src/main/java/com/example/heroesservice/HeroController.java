@@ -33,7 +33,7 @@ public class HeroController {
         return new ResponseEntity<>(heroRepository.save(hero), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Hero> updateHero(@PathVariable Long id, @RequestBody Hero newHero) {
         return heroRepository.findById(id)
                 .map(hero -> {
@@ -41,5 +41,10 @@ public class HeroController {
                     return ResponseEntity.ok(heroRepository.save(hero));
                 })
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteHero(@PathVariable Long id) {
+        heroRepository.deleteById(id);
     }
 }
