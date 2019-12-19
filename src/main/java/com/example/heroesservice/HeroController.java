@@ -23,7 +23,7 @@ public class HeroController {
 
     @GetMapping(params = "name")
     public List<Hero> getHeroesByName(@RequestParam String name) {
-        return heroRepository.findByName(name);
+        return heroRepository.findByNameStartsWith(name);
     }
 
     @GetMapping("/{id}")
