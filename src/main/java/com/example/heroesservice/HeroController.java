@@ -21,7 +21,7 @@ public class HeroController {
         return heroRepository.findAll();
     }
 
-    @GetMapping
+    @GetMapping(params = "name")
     public List<Hero> getHeroesByName(@RequestParam String name) {
         return heroRepository.findByName(name);
     }
