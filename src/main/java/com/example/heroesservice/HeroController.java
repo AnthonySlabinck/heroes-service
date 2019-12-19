@@ -33,7 +33,7 @@ public class HeroController {
         return new ResponseEntity<>(heroRepository.save(hero), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Hero> updateHero(@PathVariable Long id, @RequestBody Hero newHero) {
         return heroRepository.findById(id)
                 .map(hero -> {
