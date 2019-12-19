@@ -34,12 +34,12 @@ public class HeroController {
     }
 
     @PutMapping("/{id}")
-    public Hero updateHero(@PathVariable Long id, @RequestBody Hero newHero) {
+    public ResponseEntity<Hero> updateHero(@PathVariable Long id, @RequestBody Hero newHero) {
         return heroRepository.findById(id)
                 .map(hero -> {
                     hero.setName(newHero.getName());
-                    return heroRepository.save(hero);
+                    return ResponseEntity.ok(heroRepository.save(hero));
                 })
-                .orElseGet(() -> heroRepository.save(newHero));
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }
