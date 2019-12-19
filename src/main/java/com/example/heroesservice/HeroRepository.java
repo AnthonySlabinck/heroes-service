@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface HeroRepository extends JpaRepository<Hero, Long> {
 
-    List<Hero> findByName(String name);
+    List<Hero> findByNameStartsWith(String name);
 }
