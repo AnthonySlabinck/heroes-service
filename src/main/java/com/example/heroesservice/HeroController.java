@@ -21,6 +21,11 @@ public class HeroController {
         return heroRepository.findAll();
     }
 
+    @GetMapping
+    public List<Hero> getHeroesByName(@RequestParam String name) {
+        return heroRepository.findByName(name);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Hero> getHero(@PathVariable Long id) {
         return heroRepository.findById(id)
